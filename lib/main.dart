@@ -1,15 +1,17 @@
 import 'package:ulearning_app/core/common/app/providers/course_of_the_day_notifier.dart';
+import 'package:ulearning_app/core/common/app/providers/notifications_notifier.dart';
 import 'package:ulearning_app/core/common/app/providers/user_provider.dart';
 import 'package:ulearning_app/core/res/colours.dart';
 import 'package:ulearning_app/core/res/fonts.dart';
 import 'package:ulearning_app/core/services/injection_container.dart';
 import 'package:ulearning_app/core/services/router.dart';
-import 'package:ulearning_app/firebase_options.dart';
+
 import 'package:ulearning_app/src/dashboard/presentation/providers/dashboard_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ulearning_app/firebase_options.dart';
 
 Future<void> main() async {
@@ -32,6 +34,11 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(create: (_) => DashboardController()),
         ChangeNotifierProvider(create: (_) => CourseOfTheDayNotifier()),
+        ChangeNotifierProvider(
+          create: (_) => NotificationsNotifier(
+            sl<SharedPreferences>(),
+          ),
+        ),
       ],
       child: MaterialApp(
         title: 'Education App',

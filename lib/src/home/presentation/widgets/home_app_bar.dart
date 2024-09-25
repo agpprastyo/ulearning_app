@@ -1,5 +1,6 @@
 import 'package:ulearning_app/core/common/app/providers/user_provider.dart';
 import 'package:ulearning_app/core/res/media_res.dart';
+import 'package:ulearning_app/src/home/presentation/widgets/notification_bell.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +18,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () {},
           icon: const Icon(Icons.search),
         ),
-        const Icon(IconlyLight.notification),
+        const NotificationBell(),
         Consumer<UserProvider>(
           builder: (_, provider, __) {
             return Padding(
